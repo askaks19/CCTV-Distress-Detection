@@ -89,6 +89,7 @@ Copy code
 python app.py
 The CCTV feed will open in a window.
 Show the distress gesture for 2 seconds to trigger a WhatsApp alert.
+
 ---
 
 ## Environment Variables
@@ -103,6 +104,7 @@ TWILIO_WHATSAPP_TO=
 CLOUDINARY_CLOUD_NAME=
 CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
+
 ---
 
 ## 📍 CCTV Location Configuration
@@ -116,6 +118,7 @@ CAMERA_LON = 77.5946
 
 
 These values are used to generate a clickable Google Maps link in the WhatsApp alert.
+
 ---
 
 ## 🧠 Design Notes
@@ -129,7 +132,9 @@ Cloudinary is used instead of local hosting or tunneling tools
 Designed for real-world CCTV deployment scenarios
 
 Easy to extend with ML models or multi-camera support
+
 ---
+
 ## 🎯 Use Cases
 
 Campus security systems
@@ -141,6 +146,7 @@ Parking areas
 Public surveillance setups
 
 Emergency response automation
+
 ---
 
 ## 🔒 Security Notes
@@ -152,6 +158,7 @@ Secrets are loaded via environment variables
 Image snapshots are deleted locally after upload
 
 Fire-and-forget alert mechanism to avoid blocking video feed
+
 ---
 
 ### 👤 Author
