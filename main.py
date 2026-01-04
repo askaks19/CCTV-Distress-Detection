@@ -6,9 +6,9 @@ from twilio.rest import Client
 import cloudinary
 import cloudinary.uploader
 cloudinary.config(
-    cloud_name="ddobpwsje",
-    api_key="585897642466541",
-    api_secret="xdoCZJzgrTei2Skb0rb0kk5jsAQ"
+    cloud_name="[your cloud name]",
+    api_key="[your api key]",
+    api_secret="[api secret]"
 )
 
 
@@ -23,11 +23,11 @@ def get_google_maps_link():
 # =========================
 # TWILIO CONFIG (USE YOURS)
 # =========================
-ACCOUNT_SID = "ACfc4c053dbc555992c7f6396a7291f626"
-AUTH_TOKEN  = "923c8a9bb3e131ab4a886f9cfc4fdb29"
+ACCOUNT_SID = "[enter your account SID] "
+AUTH_TOKEN  = "[enter your account auth] "
 
-WHATSAPP_FROM = "whatsapp:+14155238886"   # Twilio sandbox
-WHATSAPP_TO   = "whatsapp:+919430304873"  # YOUR WhatsApp number (10 digits)
+WHATSAPP_FROM = "whatsapp:+14....."   # Twilio sandbox
+WHATSAPP_TO   = "whatsapp:+91........"  # YOUR WhatsApp number (10 digits)
 
 client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
@@ -188,3 +188,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+
