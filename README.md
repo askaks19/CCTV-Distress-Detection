@@ -46,12 +46,15 @@ This follows a standardized distress hand signal and works for both hands.
 ---
 
 ## 📁 Folder Structure (High-level)
-├── app.py # Main CCTV + detection + alert logic
-├── .env.example # Environment variable template
-├── .env # NOT committed (contains secrets)
-├── README.md
+cctv-distress-detection/
+│
+├── main.py          # entry point (run this)
+├── gesture.py       # hand gesture logic
+├── alert.py         # WhatsApp + Cloudinary alert
+├── config.py        # credentials & constants
 ├── requirements.txt
-└── alerts/ # Temporary snapshots (ignored in Git)
+└── README.md
+
 
 ---
 
