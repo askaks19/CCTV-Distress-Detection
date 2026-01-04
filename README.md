@@ -91,7 +91,7 @@ The CCTV feed will open in a window.
 Show the distress gesture for 2 seconds to trigger a WhatsApp alert.
 ---
 
-### Environment Variables
+## Environment Variables
 
 Required environment variables (see .env.example):
 
@@ -105,7 +105,7 @@ CLOUDINARY_API_KEY=
 CLOUDINARY_API_SECRET=
 ---
 
-### 📍 CCTV Location Configuration
+## 📍 CCTV Location Configuration
 
 The CCTV camera is assumed to be fixed.
 GPS coordinates are hardcoded inside app.py:
@@ -118,7 +118,7 @@ CAMERA_LON = 77.5946
 These values are used to generate a clickable Google Maps link in the WhatsApp alert.
 ---
 
-### 🧠 Design Notes
+## 🧠 Design Notes
 
 Gesture detection uses hand landmark geometry, not ML classification
 
@@ -130,7 +130,7 @@ Designed for real-world CCTV deployment scenarios
 
 Easy to extend with ML models or multi-camera support
 ---
-### 🎯 Use Cases
+## 🎯 Use Cases
 
 Campus security systems
 
@@ -143,7 +143,7 @@ Public surveillance setups
 Emergency response automation
 ---
 
-### 🔒 Security Notes
+## 🔒 Security Notes
 
 Secrets are loaded via environment variables
 
@@ -153,6 +153,10 @@ Image snapshots are deleted locally after upload
 
 Fire-and-forget alert mechanism to avoid blocking video feed
 ---
+
+### 👤 Author
+
+Ayush Kumar Singh
 
 
 
