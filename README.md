@@ -5,7 +5,22 @@
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-Hand%20Tracking-green?style=flat-square)](https://mediapipe.dev/)
 [![Twilio](https://img.shields.io/badge/Twilio-WhatsApp%20API-orange?style=flat-square)](https://www.twilio.com/)
 
-A **real-time computer vision system** that detects standardized distress hand gestures from live CCTV footage and automatically sends emergency WhatsApp alerts with image evidence and GPS location coordinates.
+> A **real-time computer vision system** that detects standardized distress hand gestures from live CCTV footage and automatically sends emergency WhatsApp alerts with image evidence and GPS location coordinates.
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Usage](#-usage)
+- [How It Works](#-how-it-works)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
@@ -13,259 +28,298 @@ A **real-time computer vision system** that detects standardized distress hand g
 
 This intelligent surveillance system uses **MediaPipe hand landmark detection** and **OpenCV** to recognize distress signals in real-time, integrating seamlessly with **Twilio WhatsApp API** for instant emergency notifications. Image snapshots are uploaded to **Cloudinary** for secure cloud hosting and WhatsApp delivery.
 
-**Perfect for**: Campus security, hostels, parking areas, public surveillance, and automated emergency response systems.
+### Perfect for:
+- 🏫 Campus security
+- 🏢 Hostels and residential facilities
+- 🅿️ Parking areas
+- 👥 Public surveillance
+- 🚨 Automated emergency response systems
+- 🎭 Event venues and crowded spaces
 
 ---
 
 ## ✨ Key Features
 
-| Feature | Description |
-|---------|-------------|
-| 🎥 **Real-time Processing** | Live CCTV/webcam feed analysis |
-| 🤚 **Gesture Recognition** | Detects 4-finger distress signal (both hands) |
-| ✅ **Smart Validation** | 2-second hold time reduces false positives |
-| 📲 **WhatsApp Alerts** | Instant emergency notifications via Twilio |
-| 📸 **Evidence Capture** | Automatic snapshot with distress moment |
-| ☁️ **Cloud Hosting** | Images uploaded to Cloudinary |
-| 📍 **GPS Integration** | Google Maps location link in alert |
-| 🔐 **Secure Setup** | Environment variables for all credentials |
+| Feature | Description | Status |
+|---------|-------------|--------|
+| 🎥 **Real-time Processing** | Live CCTV/webcam feed analysis | ✅ |
+| 🤚 **Gesture Recognition** | Detects 4-finger distress signal (both hands) | ✅ |
+| ✅ **Smart Validation** | 2-second hold time reduces false positives | ✅ |
+| 📲 **WhatsApp Alerts** | Instant emergency notifications via Twilio | ✅ |
+| 📸 **Evidence Capture** | Automatic snapshot with distress moment | ✅ |
+| ☁️ **Cloud Hosting** | Images uploaded to Cloudinary | ✅ |
+| 📍 **GPS Integration** | Google Maps location link in alert | ✅ |
+| 🔔 **Multi-recipient** | Alert multiple WhatsApp numbers | ✅ |
+| 🎨 **Visual Feedback** | Real-time hand landmark visualization | ✅ |
+| ⚡ **Low Latency** | Optimized for real-time performance | ✅ |
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-┌─────────────────────────────────────┐
-│ CCTV Distress Detection System │
-├─────────────────────────────────────┤
-│ - Python 3.10+ │
-│ - OpenCV (Video Processing) │
-│ - MediaPipe (Hand Detection) │
-│ - Twilio API (WhatsApp) │
-│ - Cloudinary (Image Hosting) │
-│ - Rule-based Gesture Logic │
-└─────────────────────────────────────┘
+### Core Technologies
+- **Python 3.10+** - Backend programming language
+- **OpenCV** - Computer vision library
+- **MediaPipe** - Hand landmark detection
+- **Twilio** - WhatsApp API integration
+- **Cloudinary** - Cloud image hosting
 
-
----
-
-## 📸 Distress Gesture Definition
-
-The system triggers an alert **ONLY** when:
-
-✋ **Index, Middle, Ring, Pinky fingers** → Extended  
-👍 **Thumb** → Tucked inside palm  
-⏱️ **Hold Duration** → Minimum 2 seconds continuous
-
-This standardized signal works for both left and right hands, reducing accidental triggers.
+### Supporting Libraries
+- `numpy` - Numerical computations
+- `requests` - HTTP requests
+- `python-dotenv` - Environment variable management
+- `geopy` - GPS location handling
 
 ---
 
-## 📁 Project Structure
-cctv-distress-detection/
-├── 📄 main.py # Entry point - run this first
-├── 🤚 gesture.py # Hand gesture detection logic
-├── 📲 alert.py # WhatsApp + Cloudinary integration
-├── ⚙️ config.py # Configuration & constants
-├── 📦 requirements.txt # Project dependencies
-├── 📋 .env.example # Environment variables template
-└── 📖 README.md # This file
+## 📦 Installation
 
+### Prerequisites
+- Python 3.10 or higher
+- pip (Python package manager)
+- Webcam or CCTV feed access
+- Active internet connection
+
+### Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/askaks19/CCTV-Distress-Detection.git
+   cd CCTV-Distress-Detection
+   ```
+
+2. **Create a virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables** (see [Configuration](#-configuration))
+   ```bash
+   cp .env.example .env
+   ```
 
 ---
 
-## 🚀 Quick Start Guide
+## ⚙️ Configuration
 
-### Step 1: Clone Repository
+### Twilio Setup
+1. Sign up at [Twilio](https://www.twilio.com/)
+2. Get your Account SID and Auth Token
+3. Set up WhatsApp Sender (sandbox or production)
+4. Configure recipient WhatsApp number
 
 ```bash
-git clone https://github.com/askaks19/CCTV-Distress-Detection.git
-cd CCTV-Distress-Detection
-```
-### Step 2: Set Up Virtual Environment
-```
-python -m venv mp_env
-mp_env\Scripts\activate
-```
-### Step 3: Install Dependencies
-```
-pip install -r requirements.txt
-```
-
-### Step 4: Configure Environment Variables
-Create a .env file in the project root:
-```
-cp .env.example .env
-```
-## Fill in your credentials:
-# Twilio WhatsApp Configuration
 TWILIO_ACCOUNT_SID=your_account_sid
 TWILIO_AUTH_TOKEN=your_auth_token
-TWILIO_WHATSAPP_FROM=+1234567890
-TWILIO_WHATSAPP_TO=+9876543210
+TWILIO_WHATSAPP_FROM=whatsapp:+1234567890
+TWILIO_WHATSAPP_TO=whatsapp:+0987654321
+```
 
-# Cloudinary Image Hosting
+### Cloudinary Setup
+1. Sign up at [Cloudinary](https://cloudinary.com/)
+2. Get your Cloud Name, API Key, and API Secret
+
+```bash
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
-
-# CCTV Location (Coordinates)
-CAMERA_NAME=Hostel Gate
-CAMERA_LAT=12.9716
-CAMERA_LON=77.5946
-
-⚠️ Important: Never commit .env - it contains secrets!
-
-### Step 5: Run the System
-```python main.py```
-A window will open showing the live CCTV feed. Show the distress gesture for 2+ seconds to trigger a WhatsApp alert.
-
-## 🔧 Configuration
-Twilio Setup
-Create a Twilio account
-
-Get your Account SID and Auth Token
-
-Set up WhatsApp Sender (Twilio sandbox or production)
-
-Configure recipient WhatsApp number
-
-### Cloudinary Setup
-Sign up at Cloudinary
-
-Get your Cloud Name, API Key, and API Secret
-
-Images will auto-delete locally after cloud upload
-
-### CCTV Location
-Edit config.py to set your camera's GPS coordinates:
-
 ```
+
+### Camera Location
+Edit `config.py` to set your camera's GPS coordinates:
+
+```python
 CAMERA_NAME = "Parking Area North"
 CAMERA_LAT = 40.7128
 CAMERA_LON = -74.0060
 ```
-### 📖 How It Works
 
-┌────────────────────┐
-│  CCTV Feed Input   │
-└──────────┬─────────┘
-           │
-           ▼
-┌─────────────────────────────────┐
-│ MediaPipe Hand Detection        │
-│ (Extract 21 hand landmarks)     │
-└──────────┬─────────────────────┘
-           │
-           ▼
-┌─────────────────────────────────┐
-│ Gesture Recognition             │
-│ (Check finger & thumb status)   │
-└──────────┬─────────────────────┘
-           │
-           ▼
-┌─────────────────────────────────┐
-│ Validation Check                │
-│ (2 second hold time?)           │
-└──────────┬─────────────────────┘
-           │
-          YES
-           │
-           ▼
-┌─────────────────────────────────┐
-│ Capture Snapshot                │
-│ Upload to Cloudinary            │
-└──────────┬─────────────────────┘
-           │
-           ▼
-┌─────────────────────────────────┐
-│ Send WhatsApp Alert             │
-│ (Image + GPS Location)          │
-└─────────────────────────────────┘
+Images will auto-delete locally after cloud upload
 
-## 💡 Design Principles
-✅ Gesture detection uses hand landmark geometry (no ML model needed)
-✅ State tracking prevents alert spamming from continuous gestures
-✅ Cloudinary integration enables secure cloud image storage
-✅ Fire-and-forget alerts don't block the video processing loop
-✅ Easy to extend with multi-camera support or ML models
+---
 
-## 🎯 Use Cases
-### 🏫 Campus Security - Student emergency signaling in classrooms
+## 🚀 Usage
 
-### 🏨 Hostels & Residences - Guest distress detection in common areas
+### Run the Application
 
-### 🚗 Parking Areas - Suspicious activity or theft alerts
+```bash
+python main.py
+```
 
-### 👁️ Public Surveillance - Mall, airport, railway station monitoring
+### With Command-line Options
 
-### 🚨 Emergency Response - Auto-triggering security protocols
+```bash
+# Using webcam (default)
+python main.py --source 0
 
-## 🔒 Security Best Practices
-✅ Secrets loaded via environment variables only
-✅ .env and virtual environments excluded from Git
-✅ Image snapshots auto-deleted locally after upload
-✅ Fire-and-forget mechanism prevents video feed blocking
-✅ No sensitive data in logs or version control
+# Using video file
+python main.py --source path/to/video.mp4
 
-## 📝 Environment Variables Reference
-Variable	Purpose	Example
-TWILIO_ACCOUNT_SID	Twilio account identifier	ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-TWILIO_AUTH_TOKEN	Twilio authentication token	auth_token_here
-TWILIO_WHATSAPP_FROM	Twilio WhatsApp sender	+1234567890
-TWILIO_WHATSAPP_TO	Alert recipient number	+919876543210
+# Using RTSP stream (IP camera)
+python main.py --source "rtsp://camera_ip:port/stream"
 
+# Display confidence threshold
+python main.py --threshold 0.8
+```
 
-## 🛑 Troubleshooting
-Issue: Camera feed not opening
-→ Check camera permissions and try webcam index 0 or 1 in config.py
+### Keyboard Controls
+- `q` - Quit application
+- `s` - Save current frame
+- `r` - Reset detection timer
+- `d` - Toggle debug mode
 
-Issue: Gesture not detected
-→ Ensure good lighting and hand is fully visible. Test gesture hold for 2+ seconds.
+---
 
-Issue: WhatsApp alert not sending
-→ Verify Twilio credentials and WhatsApp phone numbers are correct (include country code)
+## 🔧 How It Works
 
-Issue: Image upload fails
-→ Check Cloudinary API credentials and internet connection
+```
+┌─────────────────┐
+│  CCTV Feed Input│
+└────────┬────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│  MediaPipe Hand Tracking │
+│  (Landmark Detection)    │
+└────────┬─────────────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│   Gesture Recognition    │
+│  (4-finger distress)     │
+└────────┬─────────────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│   Smart Validation       │
+│  (2-second hold timer)   │
+└────────┬─────────────────┘
+         │
+         ▼
+    ┌────┴────┐
+    │Confirmed?│
+    └────┬────┘
+         │ YES
+         ▼
+┌──────────────────────────┐
+│  Capture Screenshot      │
+└────────┬─────────────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│  Upload to Cloudinary    │
+└────────┬─────────────────┘
+         │
+         ▼
+┌──────────────────────────┐
+│  Send WhatsApp Alert     │
+│  (via Twilio + GPS)      │
+└──────────────────────────┘
+```
 
-## 📚 Dependencies
-text
-opencv-python>=4.5.0
-mediapipe>=0.8.0
-twilio>=8.0.0
-cloudinary>=1.30.0
-python-dotenv>=0.19.0
-Install with: pip install -r requirements.txt
+### Detection Algorithm
 
-## 🚀 Future Enhancements
- Multi-camera support with central dashboard
+1. **Hand Landmark Detection**: MediaPipe detects 21 hand landmarks per hand
+2. **Gesture Classification**: Analyzes finger positions and angles
+3. **Distress Signal**: Detects when all 4 fingers are raised (thumbs down gesture)
+4. **Temporal Validation**: Requires 2-second continuous detection to prevent false positives
+5. **Alert Trigger**: Upon confirmation, captures image and sends WhatsApp notification
 
- Machine learning gesture classification
+---
 
- Historical event logging and analytics
+## 📁 Project Structure
 
- Mobile app for alert management
+```
+CCTV-Distress-Detection/
+├── main.py                 # Main application entry point
+├── config.py              # Configuration settings
+├── requirements.txt        # Python dependencies
+├── .env.example           # Example environment variables
+│
+├── src/
+│   ├── detector.py        # MediaPipe hand detection
+│   ├── gesture.py         # Gesture recognition logic
+│   ├── alert.py           # Twilio WhatsApp integration
+│   ├── cloud.py           # Cloudinary image upload
+│   └── utils.py           # Utility functions
+│
+├── models/
+│   └── hand_landmark.pb   # Exported MediaPipe model
+│
+├── tests/
+│   ├── test_detector.py
+│   ├── test_gesture.py
+│   └── test_alert.py
+│
+├── docs/
+│   ├── SETUP.md           # Detailed setup guide
+│   ├── API.md             # API documentation
+│   └── TROUBLESHOOTING.md # Common issues & solutions
+│
+└── README.md              # This file
+```
 
- Video recording on distress detection
+---
 
- Sound alarm integration
+## 🤝 Contributing
 
- Database-backed configuration
+Contributions are welcome! Please follow these steps:
 
-## 📄 License
-MIT License - Feel free to use, modify, and distribute
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 👤 Author
-Ayush Kumar Singh
-B.Tech Computer Science (AI) - MIT Bengaluru
+### Development Setup
+
+```bash
+# Install dev dependencies
+pip install -r requirements-dev.txt
+
+# Run tests
+python -m pytest
+
+# Run linter
+pylint src/
+
+# Format code
+black src/
+```
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🆘 Support & Issues
+
+If you encounter any issues:
+
+1. Check [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
+2. Review [open issues](https://github.com/askaks19/CCTV-Distress-Detection/issues)
+3. Create a [new issue](https://github.com/askaks19/CCTV-Distress-Detection/issues/new) with detailed information
+
+---
 
 ## 🙏 Acknowledgments
-MediaPipe for hand detection models
 
-OpenCV for computer vision utilities
+- [MediaPipe](https://mediapipe.dev/) for hand landmark detection
+- [Twilio](https://www.twilio.com/) for WhatsApp API
+- [Cloudinary](https://cloudinary.com/) for cloud hosting
+- [OpenCV](https://opencv.org/) for computer vision capabilities
 
-Twilio for WhatsApp API integration
+---
 
-Cloudinary for reliable image hosting
+**⭐ If this project helped you, please consider giving it a star!**
 
-
+Made with ❤️ by [askaks19](https://github.com/askaks19)
