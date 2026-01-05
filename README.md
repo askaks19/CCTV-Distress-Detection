@@ -322,4 +322,4 @@ If you encounter any issues:
 
 **⭐ If this project helped you, please consider giving it a star!**
 
-Made with ❤️ by [ayushhhkr](https://github.com/ayushhhks)
+Made with ❤️ by [ayushhhks](https://github.com/ayushhhks)
